@@ -1,8 +1,7 @@
-import os
+import os, httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-from openai import OpenAI
 
 load_dotenv()
 
@@ -10,10 +9,7 @@ api_key = os.getenv("OPENROUTER_API_KEY")
 if not api_key:
      raise ValueError("OPENROUTER_API_KEY is not set!")
 
-client = OpenAI (
-    base_url = "https://openrouter.ai/api/v1",
-    api_key=api_key
-)
+base_url = "https://openrouter.ai/api/v1/chat/completions"
 
 app = FastAPI()
 
@@ -32,15 +28,25 @@ async def chat(request: Request):
                 "'Let me connect you to a human agent for further help.'"
             )
 
-            response = client.chat.completions.create(
-                model = "mistralai/mistral-7b-instruct:free",
-                messages = [
+            payload = {
+                "model": "mistralai/mistral-7b-instruct:free",
+                "messages": [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": query}
                 ]
-            )
+            }
 
-            reply = response.choices[0].message.content.strip()
+            headers = {
+                 "Authorization": f"Bearer {api_key}",
+                 "content-Type": "application/json"
+            }
+
+            async with httpx.AsyncClient() as client:
+                 res = await client.post(base_url, json=payload, headers=headers)
+                 res.raise_for_status()
+                 result = res.json()
+
+            reply = result["choices"][0]["message"]["content"].strip()
             escalation = "connecting you to a human" in reply.lower()
 
             return {"reply":reply, "escalation": escalation}
