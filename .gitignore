@@ -1,0 +1,38 @@
+
+.env 
+.venv 
+venv/
+ENV/ 
+env.bak/ 
+venv.bak/ 
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# Logs
+*.log
+logs/
+log/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+test.py
