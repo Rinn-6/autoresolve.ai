@@ -1,7 +1,8 @@
 import os, httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse 
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -12,6 +13,13 @@ if not api_key:
 base_url = "https://openrouter.ai/api/v1/chat/completions"
 
 app = FastAPI()
+
+app.add_middleware(
+     CORSMiddleware,
+     allow_origins=["*"],
+     allow_methods=["*"],
+     allow_headers=["*"],
+)
 
 @app.post("/chat")
 async def chat(request: Request):
