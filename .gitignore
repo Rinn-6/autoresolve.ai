@@ -36,3 +36,4 @@ log/
 .DS_Store
 
 test.py
+frontend/output.css
