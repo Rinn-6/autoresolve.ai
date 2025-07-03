@@ -20,16 +20,7 @@ AutoResolve.AI is an AI_powered customer support assistant that:
 **Deployment**  --- Render(API) + Vercel(Frontend)
 
 ## Architecture 
-
-User (Web Chat Interface)
-    |
-Frontend
-    |
-Backend
-    |
-OpenRouter API
-    |
-Intelligent Response + Escalation Logic
+![Architecture Diagram] (./assests/autoresolve.ai-archi.-diagram.png)
 
 
 ## Live Demo
