@@ -12,16 +12,11 @@ AutoResolve.AI is an AI_powered customer support assistant that:
 - Modular backend that can **plug into any interface** web, whatsapp,app
 
 ## How we built it
-  Stack       |  Description
-              |
-**Backend**     --- FastAPI + Python         
-**AI**          --- OpenRouter API
-**Frontend**    --- HTML, JS, Tailwind CSS
-**Deployment**  --- Render(API) + Vercel(Frontend)
+![autoresolve ai-archit -diagram](https://github.com/user-attachments/assets/e8753abd-75aa-46e0-874e-572d909b1a45)
+
 
 ## Architecture 
-![Architecture Diagram] [./assests/autoresolve.ai-archi.-diagram.png] [![autoresolve ai-techstackDiagram](https://github.com/user-attachments/assets/661a56e3-d45d-4d0f-b819-ae01b353061e)
-]
+![autoresolve ai-techstackDiagram](https://github.com/user-attachments/assets/661a56e3-d45d-4d0f-b819-ae01b353061e)]
 
 
 ## Live Demo
